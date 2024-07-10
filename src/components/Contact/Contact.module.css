@@ -1,0 +1,20 @@
+.container {
+  width: 280px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.name .phone {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  border: 1px solid black;
+  margin-left: auto;
+}

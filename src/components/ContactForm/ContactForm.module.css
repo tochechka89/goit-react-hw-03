@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  padding: 20px;
+  border: 1px solid #000;
+  border-radius: 6px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.btn {
+  margin-top: 20px;
+  color: #000;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
