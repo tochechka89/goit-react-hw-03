@@ -1,25 +1,35 @@
+
+import { useState } from 'react';
 import ContactList from '../ContactList/ContactList';
 import initialContacts from '../../contacts.json';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import css from './App.module.css';
-import { useState } from 'react';
+
 
 export default function App() {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => {
+    const localContacts = localStorage.getItem('contacts');
+    return localContacts ? JSON.parse(localContacts) : initialContacts;
+  });
+  
   const [search, setSearch] = useState('');
 
   const addContact = (newContact) => { 
     setContacts((prevContacts) => {
-      return [...prevContacts, newContact];
-    });
-  };
+      const result = [...prevContacts, newContact];
+     localStorage.setItem('contacts', JSON.stringify(result));
+      return result;
+    })
+  }
 
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId);
-    });
-  };
+       const result = prevContacts.filter(({ id }) => id !== contactId);
+      localStorage.setItem("contacts", JSON.stringify(result));
+      return result;
+    })
+  }
 
     const visibleContacts = contacts.filter((contact) =>
     contact.name.toLowerCase().includes(search.toLowerCase()) 
